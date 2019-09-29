@@ -4946,7 +4946,14 @@ module.exports = (function( root, factory ) {
                     arr, i, len, mouseHandler, changeHandler;
     
                 input.attr( 'type', 'file' );
-                input.attr( 'capture', 'camera');
+                // 移动端拍照 开始
+                var u = navigator.userAgent;
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                if (isiOS) {
+                    input.attr('accept', 'image/*')
+                }
+                // input.attr( 'capture', 'camera');
+                // 移动端拍照 结束
                 input.attr( 'name', opts.name );
                 input.addClass('webuploader-element-invisible');
     
